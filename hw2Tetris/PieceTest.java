@@ -65,6 +65,9 @@ public class PieceTest extends TestCase {
 		
 	}
 	
+	//test para probar el width y el height de cada 
+	//rotacion para cada pieza 
+	
 	// Here are some sample tests to get you started
 	
 	public void testSampleSize() {
@@ -162,6 +165,7 @@ public class PieceTest extends TestCase {
 	}
 	
 	// Test the skirt returned by a few pieces
+	
 	public void testSampleSkirt() {
 		// Note must use assertTrue(Arrays.equals(... as plain .equals does not work
 		// right for arrays.
