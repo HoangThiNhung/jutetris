@@ -188,9 +188,11 @@ public class PieceTest extends TestCase {
 	}
 	
 	
-	
+	/*
+	 * Prueba de que las rotaciones computeNextRotation y fastRotation 
+	 * funcionen igual con todas las rotaciones
+	 */
 	public void testequals1() {
-		
 		Piece a = arreglo_piezas[1];
 		Piece b = arreglo_piezas[1];
 		
