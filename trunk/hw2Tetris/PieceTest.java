@@ -32,37 +32,24 @@ public class PieceTest extends TestCase {
 		
 		pyr1 = new Piece(Piece.PYRAMID_STR);
 		pyr2 = pyr1.computeNextRotation();
-		pyr3 = pyr2.computeNextRotation();
-		pyr4 = pyr3.computeNextRotation();
-		pyr5 = pyr4.computeNextRotation();
 		
 		stk1 = new Piece(Piece.STICK_STR);
 		stk2 = stk1.computeNextRotation();
-		stk3 = stk2.computeNextRotation();
 		
 		lu1 = new Piece(Piece.L1_STR);
 		lu2 = lu1.computeNextRotation();
-		lu3 = lu2.computeNextRotation();
-		lu4 = lu3.computeNextRotation();
-		lu5 = lu4.computeNextRotation();
 		
 		ld1 = new Piece(Piece.L2_STR);
 		ld2 = ld1.computeNextRotation();
-		ld3 = ld2.computeNextRotation();
-		ld4 = ld3.computeNextRotation();
-		ld5 = ld4.computeNextRotation();
 		
 		su1 = new Piece(Piece.S1_STR);
 		su2 = su1.computeNextRotation();
-		su3 = su2.computeNextRotation();
 		
 		sd1 = new Piece(Piece.S2_STR);
 		sd2 = sd1.computeNextRotation();
-		sd3 = sd2.computeNextRotation();
 		
 		sqr1 = new Piece(Piece.SQUARE_STR);
 		sqr2 = sqr1.computeNextRotation();
-		
 	}
 	
 	//test para probar el width y el height de cada 
@@ -80,14 +67,6 @@ public class PieceTest extends TestCase {
 		assertEquals(2, pyr2.getWidth());
 		assertEquals(3, pyr2.getHeight());
 		
-		assertEquals(3, pyr3.getWidth());
-		assertEquals(2, pyr3.getHeight());
-		
-		assertEquals(2, pyr4.getWidth());
-		assertEquals(3, pyr4.getHeight());
-		
-		assertEquals(3, pyr5.getWidth());
-		assertEquals(2, pyr5.getHeight());
 	
 		//ahora con el stick
 		assertEquals(1, stk1.getWidth());
@@ -96,24 +75,12 @@ public class PieceTest extends TestCase {
 		assertEquals(4, stk2.getWidth());
 		assertEquals(1, stk2.getHeight());
 		
-		assertEquals(1, stk3.getWidth());
-		assertEquals(4, stk3.getHeight());
-		
 		//ahora con L1
 		assertEquals(2, lu1.getWidth());
 		assertEquals(3, lu1.getHeight());
 		
 		assertEquals(3, lu2.getWidth());
 		assertEquals(2, lu2.getHeight());
-		
-		assertEquals(2, lu3.getWidth());
-		assertEquals(3, lu3.getHeight());
-		
-		assertEquals(3, lu4.getWidth());
-		assertEquals(2, lu4.getHeight());
-		
-		assertEquals(2, lu5.getWidth());
-		assertEquals(3, lu5.getHeight());
 		
 		//ahora con L2
 		
@@ -123,15 +90,6 @@ public class PieceTest extends TestCase {
 		assertEquals(3, ld2.getWidth());
 		assertEquals(2, ld2.getHeight());
 		
-		assertEquals(2, ld3.getWidth());
-		assertEquals(3, ld3.getHeight());
-		
-		assertEquals(3, ld4.getWidth());
-		assertEquals(2, ld4.getHeight());
-		
-		assertEquals(2, ld5.getWidth());
-		assertEquals(3, ld5.getHeight());
-		
 		//ahora con S1
 		
 		assertEquals(3, su1.getWidth());
@@ -140,9 +98,6 @@ public class PieceTest extends TestCase {
 		assertEquals(2, su2.getWidth());
 		assertEquals(3, su2.getHeight());
 		
-		assertEquals(3, su3.getWidth());
-		assertEquals(2, su3.getHeight());
-		
 		//ahora con S2
 		
 		assertEquals(3, sd1.getWidth());
@@ -150,9 +105,6 @@ public class PieceTest extends TestCase {
 		
 		assertEquals(2, sd2.getWidth());
 		assertEquals(3, sd2.getHeight());
-		
-		assertEquals(3, sd3.getWidth());
-		assertEquals(2, sd3.getHeight());
 		
 		//ahora con square
 		
