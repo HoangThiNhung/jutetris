@@ -16,11 +16,11 @@ public class PieceTest extends TestCase {
 	// pyramid and s pieces in instance variables
 	// that can be used in tests.
 	
-	private Piece pyr1, pyr2, pyr3, pyr4, pyr5;
+	private Piece pyr1, pyr2, pyr3;
 	private Piece stk1, stk2, stk3;
-	private Piece lu1, lu2, lu3, lu4, lu5;
-	private Piece ld1, ld2, ld3, ld4, ld5;
-	private Piece su1, su2, su3;
+	private Piece lu1, lu2, lu4, lu5;
+	private Piece ld1, ld2, ld3;
+	private Piece su1, su2;
 	private Piece sd1, sd2, sd3;
 	private Piece sqr1, sqr2;
 	private Piece[] arreglo_piezas;
