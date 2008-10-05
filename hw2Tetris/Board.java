@@ -11,7 +11,10 @@
 public class Board	{
 	// Some ivars are stubbed out for you:
 	private int width;
+	private int widths[];
 	private int height;
+	private int heights[];
+	private int maxHeight;
 	private boolean[][] grid;
 	private boolean DEBUG = true;
 	boolean committed;
@@ -30,6 +33,9 @@ public class Board	{
 		committed = true;
 		
 		// YOUR CODE HERE
+		this.widths = new int[height];
+		this.heights = new int[width];
+		this.maxHeight = 0;
 	}
 	
 	
@@ -54,7 +60,7 @@ public class Board	{
 	 For an empty board this is 0.
 	*/
 	public int getMaxHeight() {	 
-		return 0; // YOUR CODE HERE
+		return this.maxHeight; // YOUR CODE HERE
 	}
 	
 	
@@ -64,7 +70,25 @@ public class Board	{
 	*/
 	public void sanityCheck() {
 		if (DEBUG) {
-			// YOUR CODE HERE
+			int tmp_maxHeight = 0;
+			int tmp_curHeight = 0;
+			int tmp_widths[] = new int[height];
+			for (int i = 0; i < this.widths.length; i++) {
+				tmp_curHeight = 0;				
+				for (int j = 0; j < this.heights.length; j++) {
+					if (grid[i][j]) {
+						tmp_curHeight++;
+						tmp_widths[i]++;
+					}					
+				}
+				if (heights[i] != tmp_curHeight)
+					throw new RuntimeException("Heights array is corrupted, pos: " + Integer.toString(i));
+				tmp_maxHeight = Math.max(tmp_maxHeight, tmp_curHeight);
+			}
+			if (tmp_maxHeight != maxHeight)
+				throw new RuntimeException("MaxHeight is corrupted: is " + Integer.toString(maxHeight) + " should be " + Integer.toString(tmp_maxHeight));
+			if (widths != tmp_widths)
+				throw new RuntimeException("Widhts array is corrupted");
 		}
 	}
 	
@@ -78,7 +102,9 @@ public class Board	{
 	 to compute this fast -- O(skirt length).
 	*/
 	public int dropHeight(Piece piece, int x) {
-		return 0; // YOUR CODE HERE
+		if (x<0 || x>this.width)
+			return -1;
+		return getColumnHeight(x) + piece.getSkirt()[0]; // YOUR CODE HERE
 	}
 	
 	
@@ -88,7 +114,9 @@ public class Board	{
 	 The height is 0 if the column contains no blocks.
 	*/
 	public int getColumnHeight(int x) {
-		return 0; // YOUR CODE HERE
+		if (x < 0 || x > this.height)
+			return -1; //TODO esta bien -1?
+		return this.heights[x] ; 
 	}
 	
 	
@@ -97,7 +125,9 @@ public class Board	{
 	 the given row.
 	*/
 	public int getRowWidth(int y) {
-		 return 0; // YOUR CODE HERE
+		if (y < 0 || y > this.width)
+			return -1; //TODO error?
+		 return this.widths[y]; 
 	}
 	
 	
@@ -107,7 +137,10 @@ public class Board	{
 	 always return true.
 	*/
 	public boolean getGrid(int x, int y) {
-		return false; // YOUR CODE HERE
+		if ((x>=0 && x<this.width) &&
+			(y>=0 && y<this.height))	
+			return this.grid[x][y];
+		return true; // YOUR CODE HERE
 	}
 	
 	

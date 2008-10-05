@@ -106,13 +106,15 @@ public class Piece {
 	 Returns a new piece that is 90 degrees counter-clockwise
 	 rotated from the receiver.
 	 */
+	
 	public Piece computeNextRotation() {
 		TPoint temporal[] = new TPoint[body.length];
 		
         for (int i = 0; i < body.length; i++) {
                 int x = body[i].y;
                 int y = body[i].x;
-                if (x != 1 && x != body.length-1) {
+                if (x != 1 && x != body.length-1){
+                	
                         temporal[i] = new TPoint((x+2) % body.length, y);
                 } else {
                         temporal[i] = new TPoint(x, y);
@@ -121,7 +123,6 @@ public class Piece {
         Piece nueva = new Piece(temporal);
         
         return nueva.normalizar();
-        
 	}
 	
 	public Piece normalizar()
