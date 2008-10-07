@@ -180,8 +180,26 @@ public class Board	{
 	 things above down. Returns the number of rows cleared.
 	*/
 	public int clearRows() {
+		DEBUG = false;
 		int rowsCleared = 0;
-		// YOUR CODE HERE
+		
+		for (int i = 0; i < height; i++) {
+			
+			if(width == widths[i])
+			{
+				DEBUG = true;
+				rowsCleared++;
+				for (int k = i; k < height; k++) 
+					for (int l = 0; l < width; l++)
+						if(k!=width-1)
+							grid[l][k] = grid[l][k+1];
+						else
+							grid[l][k] = false;
+							
+				i--;
+			}
+		}
+
 		sanityCheck();
 		return rowsCleared;
 	}
