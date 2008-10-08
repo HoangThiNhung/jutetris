@@ -69,8 +69,13 @@ public class Board	{
 	 Returns the max column height present in the board.
 	 For an empty board this is 0.
 	*/
-	public int getMaxHeight() {	 
-		return this.maxHeight; // YOUR CODE HERE
+	public int getMaxHeight() {
+		this.maxHeight = heights[0];
+		for (int i = 1; i < heights.length; i++) {
+			this.maxHeight = Math.max(this.maxHeight,heights[i]);
+		}
+		return this.maxHeight; 
+		
 	}
 	
 	
