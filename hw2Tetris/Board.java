@@ -30,12 +30,22 @@ public class Board	{
 		this.width = width;
 		this.height = height;
 		grid = new boolean[width][height];
+		
 		committed = true;
 		
-		// YOUR CODE HERE
+		for (int i = 0; i < width; i++) {
+			grid[i] = new boolean[height];
+		}
+		
 		this.widths = new int[height];
 		this.heights = new int[width];
 		this.maxHeight = 0;
+		
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				grid[i][j] = false;
+			}
+		}
 	}
 	
 	
