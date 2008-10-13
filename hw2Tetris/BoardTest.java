@@ -3,7 +3,7 @@ import junit.framework.TestCase;
 
 public class BoardTest extends TestCase {
 	Board b;
-	Piece pyr1, pyr2, pyr3, pyr4, s, sRotated;
+	Piece pyr1, pyr2, pyr3, pyr4, s, sRotated, stick;
 
 	// This shows how to build things in setUp() to re-use
 	// across tests.
@@ -22,6 +22,8 @@ public class BoardTest extends TestCase {
 		
 		s = new Piece(Piece.S1_STR);
 		sRotated = s.computeNextRotation();
+		
+		stick = new Piece(Piece.STICK_STR);
 		
 		b.place(pyr1, 0, 0);
 	}
@@ -51,5 +53,35 @@ public class BoardTest extends TestCase {
 	// place, clearRows, undo, place ... checking a few col/row/max
 	// numbers that the board looks right after the operations.
 	
+	public void testSample3() {
+		b.commit();
+		b.place(sRotated, 1, 1);
+		int result2 = b.place(stick, 0, 1);
+		assertEquals(Board.PLACE_ROW_FILLED, result2);
+		assertEquals(5, b.getColumnHeight(0));
+		assertEquals(4, b.getColumnHeight(1));
+		assertEquals(3, b.getColumnHeight(2));
+		assertEquals(5, b.getMaxHeight());
+	}
+	
+	public void testSample4() {
+		b.commit();
+		int result = b.place(pyr2, 0, 1);
+		assertEquals(Board.PLACE_BAD, result);
+		assertEquals(2, b.getMaxHeight());
+		assertEquals(3, b.getRowWidth(0));
+		assertEquals(1, b.getRowWidth(1));
+		assertEquals(0, b.getRowWidth(2));
+	}
+	
+	public void testSample5() {
+		b.commit();
+		int result = b.place(pyr3, 1, 1);
+		assertEquals(Board.PLACE_OUT_BOUNDS, result);
+		assertEquals(2, b.getMaxHeight());
+		assertEquals(3, b.getRowWidth(0));
+		assertEquals(1, b.getRowWidth(1));
+		assertEquals(0, b.getRowWidth(2));
+	}
 	
 }
