@@ -180,15 +180,15 @@ public class Board	{
 		for (TPoint pointito : piece.getBody()){
 			int nuevo_x = x+pointito.x;
 			int nuevo_y = y+pointito.y;
-			if(nuevo_x >= getWidth() && nuevo_y >= getHeight())
+			if(nuevo_x >= this.getWidth() || nuevo_y >= this.getHeight())
 				return PLACE_OUT_BOUNDS;
-			if(grid[nuevo_x][nuevo_y])
+			if(this.grid[nuevo_x][nuevo_y])
 				return PLACE_BAD;
 			
-			grid[nuevo_x][nuevo_y] = true;
-			heights[nuevo_x]++;
-			widths[nuevo_y]++;
-			if(heights.length == width)
+			this.grid[nuevo_x][nuevo_y] = true;
+			this.heights[nuevo_x] +=1;
+			this.widths[nuevo_y] += 1;
+			if(this.widths[nuevo_y] == this.getWidth())
 				ans =  PLACE_ROW_FILLED;
 		}	
 		return ans;
