@@ -48,7 +48,6 @@ public class Board	{
 		}
 	}
 	
-	
 	/**
 	 Returns the width of the board in blocks.
 	*/
@@ -119,7 +118,7 @@ public class Board	{
 	public int dropHeight(Piece piece, int x) {
 		if (x<0 || x>this.width)
 			return -1;
-		return getColumnHeight(x) + piece.getSkirt()[0]; // YOUR CODE HERE
+		return getColumnHeight(x) + piece.getSkirt()[0]; 
 	}
 	
 	
@@ -129,8 +128,6 @@ public class Board	{
 	 The height is 0 if the column contains no blocks.
 	*/
 	public int getColumnHeight(int x) {
-		if (x < 0 || x > this.height)
-			return -1; //TODO esta bien -1?
 		return this.heights[x] ; 
 	}
 	
@@ -140,8 +137,6 @@ public class Board	{
 	 the given row.
 	*/
 	public int getRowWidth(int y) {
-		if (y < 0 || y > this.width)
-			return -1; //TODO error?
 		 return this.widths[y]; 
 	}
 	
@@ -155,7 +150,7 @@ public class Board	{
 		if ((x>=0 && x<this.width) &&
 			(y>=0 && y<this.height))	
 			return this.grid[x][y];
-		return true; // YOUR CODE HERE
+		return true;
 	}
 	
 	
@@ -181,12 +176,22 @@ public class Board	{
 	public int place(Piece piece, int x, int y) {
 		// flag !committed problem
 		if (!committed) throw new RuntimeException("place commit problem");
+		int ans = PLACE_OK;
+		for (TPoint pointito : piece.getBody()){
+			int nuevo_x = x+pointito.x;
+			int nuevo_y = y+pointito.y;
+			if(nuevo_x >= getWidth() && nuevo_y >= getHeight())
+				return PLACE_OUT_BOUNDS;
+			if(grid[nuevo_x][nuevo_y])
+				return PLACE_BAD;
 			
-		int result = PLACE_OK;
-		
-		// YOUR CODE HERE
-		
-		return result;
+			grid[nuevo_x][nuevo_y] = true;
+			heights[nuevo_x]++;
+			widths[nuevo_y]++;
+			if(heights.length == width)
+				ans =  PLACE_ROW_FILLED;
+		}	
+		return ans;
 	}
 	
 	
