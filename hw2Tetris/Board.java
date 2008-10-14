@@ -211,12 +211,17 @@ public class Board	{
 				rowsCleared++;
 				for (int k = i; k < height; k++) 
 					for (int l = 0; l < width; l++)
-						if(k!=width-1)
+						if(k!=height-1)
 							grid[l][k] = grid[l][k+1];
 						else
 							grid[l][k] = false;
-							
+				int counter = 0;
+				for (int m=0; m < width; m++) {
+					if (grid[i][m]) counter++;
+				}
+				widths[i] = counter;							
 				i--;
+
 			}
 		}
 
